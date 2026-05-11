@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v20/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYrEtFmSqn7g.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Caveat";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/caveat/v18/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SIKjYBxPigs.woff2")
+    format("woff2");
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --body-font-family: "Cormorant Garamond", "Times New Roman", serif;
+  --body-bg: #ffffff;
+  --body-color: #262626;
+
+  --color-white: #fff;
+  --color-black: #000;
+  --color-light-gray: #ffffff;
+  --color-pale-almond: #f5f3ef;
+  --color-almond: #eeebe4;
+  --color-soft-soil: #8d8277;
+  --color-dark-soil: #71685f;
+  --color-warm-cream: #f7f3ee;
+  --color-paper: #efe8df;
+  --color-accent: #b8a898;
+  --color-text-main: #2c2b2a;
+  --color-text-soft: #7e7468;
+
+  --space-xs: clamp(0.75rem, 1vw, 1rem);
+  --space-s: clamp(1rem, 1.5vw, 1.5rem);
+  --space-m: clamp(1.5rem, 2vw, 2.5rem);
+  --space-l: clamp(2rem, 4vw, 5rem);
+  --space-xl: clamp(4rem, 8vw, 10rem);
+
+  --step--1: clamp(0.8rem, 0.9vw, 0.95rem);
+  --step-0: clamp(1rem, 1.1vw, 1.2rem);
+  --step-1: clamp(1.25rem, 2vw, 2rem);
+  --step-2: clamp(2rem, 5vw, 5rem);
+  --step-3: clamp(4rem, 9vw, 9rem);
+
+  --radius-card: 3px;
+  --transition-soft: all 0.3s ease;
+  --transition-slow: all 0.8s ease;
+  --container-padding: clamp(1rem, 5vw, 6rem);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--body-bg);
+  --color-foreground: var(--body-color);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overscroll-behavior-y: none;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--body-font-family);
+  background: var(--body-bg);
+  color: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1.2s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.5s ease-out both;
+}
+
+.animate-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: softPulse 3s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: sway 8s ease-in-out infinite;
+}
+
+.delay-200 { animation-delay: 0.2s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-1000 { animation-delay: 1s; }
+.delay-1200 { animation-delay: 1.2s; }
+.delay-1400 { animation-delay: 1.4s; }
+
+/* Selection color */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-white);
 }
