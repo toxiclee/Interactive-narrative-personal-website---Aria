@@ -61,15 +61,20 @@ export default function MemorySpaceSection() {
           Sounds in the air. An immersive archive, built in three dimensions.
         </p>
 
-        <button className="group" style={{
-          fontFamily: "var(--body-font-family)", fontSize: "var(--step--1)",
-          letterSpacing: "0.15em", textTransform: "uppercase",
-          color: "var(--color-text-main)", background: "transparent",
-          border: "1px solid var(--color-accent)",
-          borderRadius: "var(--radius-card)",
-          padding: "var(--space-s) var(--space-l)",
-          cursor: "pointer", transition: "var(--transition-slow)",
-        }}
+        <a
+          href="#"
+          onClick={(e) => e.preventDefault()}
+          className="group"
+          style={{
+            fontFamily: "var(--body-font-family)", fontSize: "var(--step--1)",
+            letterSpacing: "0.15em", textTransform: "uppercase",
+            color: "var(--color-text-main)", background: "transparent",
+            border: "1px solid var(--color-accent)",
+            borderRadius: "var(--radius-card)",
+            padding: "var(--space-s) var(--space-l)",
+            cursor: "pointer", transition: "var(--transition-slow)",
+            textDecoration: "none", display: "inline-block",
+          }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = "var(--color-text-main)";
             e.currentTarget.style.color = "var(--color-warm-cream)";
@@ -80,7 +85,7 @@ export default function MemorySpaceSection() {
             e.currentTarget.style.color = "var(--color-text-main)";
             e.currentTarget.style.borderColor = "var(--color-accent)";
           }}
-        >Explore the Space</button>
+        >Explore the Space — Coming Soon</a>
       </div>
 
       <p style={{
