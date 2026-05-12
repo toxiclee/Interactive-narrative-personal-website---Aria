@@ -1,12 +1,16 @@
 "use client";
 
-import SceneLetter from "../components/SceneLetter";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+const EmbodiedLetter = dynamic(
+  () => import("../components/EmbodiedLetter"),
+  { ssr: false }
+);
 
 export default function LetterPage() {
   return (
     <main style={{ background: "#fff", minHeight: "100vh" }}>
-      {/* Back arrow */}
       <nav
         style={{
           padding: "var(--space-m) var(--container-padding)",
@@ -54,7 +58,7 @@ export default function LetterPage() {
         <div style={{ width: "20px" }} />
       </nav>
 
-      <SceneLetter />
+      <EmbodiedLetter />
     </main>
   );
 }

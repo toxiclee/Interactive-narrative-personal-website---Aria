@@ -1,25 +1,7 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Cormorant Garamond";
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/cormorantgaramond/v20/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYrEtFmSqn7g.woff2")
-    format("woff2");
-}
-
-@font-face {
-  font-family: "Caveat";
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/caveat/v18/WnznHAc5bAfYB2QRah7pcpNvOx-pjfJ9SIKjYBxPigs.woff2")
-    format("woff2");
-}
-
 :root {
-  --body-font-family: "Cormorant Garamond", "Times New Roman", serif;
+  --body-font-family: var(--font-cormorant), "Cormorant Garamond", "Times New Roman", serif;
   --body-bg: #ffffff;
   --body-color: #262626;
 
