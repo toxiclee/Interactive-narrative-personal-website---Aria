@@ -10,7 +10,14 @@ const EmbodiedLetter = dynamic(
 
 export default function LetterPage() {
   return (
-    <main style={{ background: "#fff", minHeight: "100vh" }}>
+    <main
+      style={{
+        background: "#fff",
+        minHeight: "100dvh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <nav
         style={{
           padding: "var(--space-m) var(--container-padding)",
@@ -58,7 +65,9 @@ export default function LetterPage() {
         <div style={{ width: "20px" }} />
       </nav>
 
-      <EmbodiedLetter />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: 0 }}>
+        <EmbodiedLetter />
+      </div>
     </main>
   );
 }

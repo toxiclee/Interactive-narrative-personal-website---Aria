@@ -1,21 +1,6 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Caveat } from "next/font/google";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-cormorant",
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-caveat",
-});
+import { googleFontClassName } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Aria Space — A Personal Archive",
@@ -29,7 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${caveat.variable}`}>
+    <html
+      lang="en"
+      className={googleFontClassName}
+      data-scroll-behavior="smooth"
+    >
       <body>{children}</body>
     </html>
   );

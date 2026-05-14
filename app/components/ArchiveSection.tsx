@@ -12,7 +12,7 @@ const themes: Theme[] = [
   { label: "Places I\u2019ve Been", count: 24, description: "Cities, rooms, forests, coastlines \u2014 spaces that shaped something." },
   { label: "Things I\u2019ve Made", count: 18, description: "Projects, tools, experiments \u2014 the quiet work of building." },
   { label: "Words I\u2019ve Kept", count: 31, description: "Notes, letters, fragments \u2014 writings that stayed with me." },
-  { label: "Light I\u2019ve Caught", count: 42, description: "Photographs at golden hour, in fog, under trees." },
+  { label: "Photographs", count: 42, description: "Golden hour, fog, under trees." },
   { label: "Sounds I Remember", count: 12, description: "Field recordings, ambient pieces, music from certain moments." },
   { label: "People I\u2019ve Met", count: 8, description: "Portraits, conversations, brief encounters worth remembering." },
 ];
@@ -149,6 +149,8 @@ export default function ArchiveSection() {
               fontWeight: 300,
               color: "var(--color-text-main)",
               lineHeight: 1.1,
+              textShadow:
+                "0 1px 0 rgba(255,253,250,0.95), 0 20px 50px rgba(85, 72, 62, 0.12)",
             }}
           >
             The Archive

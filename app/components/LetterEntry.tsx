@@ -26,11 +26,13 @@ export default function LetterEntry() {
 
   return (
     <section
+      id="letter"
       ref={ref}
       style={{
         background: "#fff",
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "min(78vh, 640px)",
+        padding: "clamp(1.75rem, 5vh, 3rem) var(--container-padding)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -38,14 +40,21 @@ export default function LetterEntry() {
     >
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          opacity: fadeIn,
-          transform: `translateY(${rise}px) scale(${imgScale})`,
-          transition: "transform 0.15s linear, opacity 0.15s linear",
+          perspective: "min(1100px, 92vw)",
+          perspectiveOrigin: "50% 32%",
         }}
       >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            opacity: fadeIn,
+            transform: `translateY(${rise}px) translateZ(${6 + fadeIn * 20}px) scale(${imgScale})`,
+            transformStyle: "preserve-3d",
+            transition: "transform 0.15s linear, opacity 0.15s linear",
+          }}
+        >
         {/* Oil painting frame */}
         <Link
           href="/letter"
@@ -109,6 +118,7 @@ export default function LetterEntry() {
               src="/letter.jpg"
               alt="A letter from the archive"
               fill
+              sizes="260px"
               className="object-cover"
               style={{ objectPosition: "center top" }}
             />
@@ -141,6 +151,7 @@ export default function LetterEntry() {
         >
           Click to read
         </p>
+        </div>
       </div>
     </section>
   );

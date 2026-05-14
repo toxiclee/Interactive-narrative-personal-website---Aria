@@ -34,6 +34,12 @@
   --transition-soft: all 0.3s ease;
   --transition-slow: all 0.8s ease;
   --container-padding: clamp(1rem, 5vw, 6rem);
+
+  /* SpatialContinuum (set on scroll in client; defaults avoid flash before hydration) */
+  --spatial-y: 0px;
+  --spatial-t: 0;
+  --spatial-mx: 0;
+  --spatial-my: 0;
 }
 
 @theme inline {
@@ -148,4 +154,10 @@ body::before {
 ::selection {
   background: var(--color-accent);
   color: var(--color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spatial-continuum-layer {
+    transform: none !important;
+  }
 }

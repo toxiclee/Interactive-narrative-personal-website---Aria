@@ -1,0 +1,42 @@
+/* Bypass Tailwind/PostCSS for dev diagnostics (NEXT_MINIMAL_CSS=1) */
+:root {
+  --font-cormorant: ui-serif, Georgia, "Times New Roman", serif;
+  --font-caveat: "Apple Chancery", "Segoe Script", cursive;
+  --body-font-family: var(--font-cormorant);
+  --body-bg: #ffffff;
+  --body-color: #262626;
+  --color-soft-soil: #8d8277;
+  --color-dark-soil: #71685f;
+  --color-accent: #b8a898;
+  --color-text-main: #2c2b2a;
+  --color-text-soft: #7e7468;
+  --color-pale-almond: #f5f3ef;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 4rem;
+  --step--1: 0.85rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 2rem;
+  --step-3: 4rem;
+  --radius-card: 3px;
+  --transition-soft: all 0.3s ease;
+  --transition-slow: all 0.8s ease;
+  --container-padding: clamp(1rem, 5vw, 6rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--body-bg);
+  color: var(--body-color);
+  font-family: var(--body-font-family);
+}

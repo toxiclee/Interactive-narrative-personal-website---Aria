@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import SceneOpening from "./SceneOpening";
-import SceneRoom from "./SceneRoom";
 
 export default function NarrativeScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,9 +64,16 @@ export default function NarrativeScroll() {
           }}
         />
 
-        {/* Scene layers — overlapping, continuous */}
-        <SceneOpening progress={progress} />
-        <SceneRoom progress={progress} />
+        <div
+          className="absolute inset-0"
+          style={{
+            perspective: "min(1600px, 125vw)",
+            perspectiveOrigin: "50% 40%",
+            transformStyle: "preserve-3d",
+          }}
+        >
+          <SceneOpening progress={progress} />
+        </div>
       </div>
     </div>
   );

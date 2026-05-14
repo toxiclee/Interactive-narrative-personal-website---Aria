@@ -1,83 +1,107 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import NarrativeScroll from "./components/NarrativeScroll";
 import HorizontalTransition from "./components/HorizontalTransition";
 import PhotographySection from "./components/PhotographySection";
-import ProjectsSection from "./components/ProjectsSection";
 import ArchiveSection from "./components/ArchiveSection";
 import MemorySpaceSection from "./components/MemorySpaceSection";
 import LetterEntry from "./components/LetterEntry";
+import SpatialContinuum from "./components/SpatialContinuum";
 
 export default function Home() {
-  const [pageProgress, setPageProgress] = useState(0);
-
-  useEffect(() => {
-    function handleScroll() {
-      const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setPageProgress(docHeight > 0 ? scrollY / docHeight : 0);
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const bgHue = 0;
-  const bgSat = 0;
-  const bgLight = 100;
-
   return (
     <>
       <Header />
 
-      {/* Continuous evolving background */}
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: `hsl(${bgHue}, ${bgSat}%, ${bgLight}%)`,
+          background: "var(--color-warm-cream)",
           zIndex: -2,
         }}
       />
-      <div
-        className="fixed inset-0 pointer-events-none"
+
+      <main
         style={{
-          background: "transparent",
-          zIndex: -1,
+          position: "relative",
+          zIndex: 0,
+          isolation: "isolate",
         }}
-      />
+      >
+        <SpatialContinuum />
+        <div className="relative z-1">
+          <NarrativeScroll />
 
-      <main style={{ position: "relative", zIndex: 0 }}>
-        {/* Part 1: Landing — cinematic push-in */}
-        <NarrativeScroll />
+          <LetterEntry />
 
-        {/* Letter entry — click to expand */}
-        <LetterEntry />
+          <HorizontalTransition variant="letter-to-photography" />
 
-        {/* Transition: Letter → Photography (2.png horizontal) */}
-        <HorizontalTransition variant="letter-to-photography" />
+          <PhotographySection />
 
-        {/* Photography section (vertical) */}
-        <PhotographySection />
+          <HorizontalTransition variant="dress-closeup" />
 
-        {/* Transition: Photography → Projects (dress close-up zoom) */}
-        <HorizontalTransition variant="dress-closeup" />
+          <ArchiveSection />
 
-        {/* Projects section (vertical) */}
-        <ProjectsSection />
+          <HorizontalTransition variant="archive-to-memory" />
 
-        {/* Transition: Projects → Archive (ballet1st.png) */}
-        <HorizontalTransition variant="letter-to-photo" />
+          <MemorySpaceSection />
 
-        {/* Archive section (vertical) */}
-        <ArchiveSection />
-
-        {/* Transition: Archive → Memory Space (horizontal painting) */}
-        <HorizontalTransition variant="archive-to-memory" />
-
-        {/* Memory Space CTA (vertical) */}
-        <MemorySpaceSection />
+          <section
+            id="contact"
+            style={{
+              minHeight: "36vh",
+              padding: "var(--space-xl) var(--container-padding)",
+              background: "var(--color-warm-cream)",
+              borderTop: "1px solid rgba(141, 130, 119, 0.15)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--body-font-family)",
+                fontSize: "var(--step--1)",
+                color: "var(--color-soft-soil)",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                marginBottom: "var(--space-s)",
+              }}
+            >
+              Contact
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--body-font-family)",
+                fontSize: "var(--step-0)",
+                fontWeight: 300,
+                color: "var(--color-text-main)",
+                maxWidth: "28rem",
+                lineHeight: 1.65,
+                marginBottom: "var(--space-m)",
+              }}
+            >
+              If something here spoke to you, I would be glad to hear it.
+            </p>
+            <a
+              href="mailto:hello@example.com"
+              style={{
+                fontFamily: "var(--body-font-family)",
+                fontSize: "var(--step--1)",
+                color: "var(--color-text-soft)",
+                letterSpacing: "0.08em",
+                textDecoration: "none",
+                borderBottom: "1px solid rgba(141, 130, 119, 0.25)",
+                paddingBottom: 2,
+              }}
+            >
+              hello@example.com
+            </a>
+          </section>
+        </div>
       </main>
     </>
   );

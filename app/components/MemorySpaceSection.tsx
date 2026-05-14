@@ -19,6 +19,7 @@ export default function MemorySpaceSection() {
 
   return (
     <section
+      id="memory-room"
       ref={ref}
       style={{
         minHeight: "100vh",
@@ -46,11 +47,42 @@ export default function MemorySpaceSection() {
           textTransform: "uppercase", marginBottom: "var(--space-s)",
         }}>Coming soon</p>
 
-        <h2 style={{
-          fontFamily: "var(--body-font-family)", fontSize: "var(--step-2)",
-          fontWeight: 300, color: "var(--color-text-main)", lineHeight: 1.2,
-          marginBottom: "var(--space-m)",
-        }}>Enter My 3D Memory Space</h2>
+        <h2
+          className="relative inline-grid place-items-center"
+          style={{
+            fontFamily: "var(--body-font-family)",
+            fontSize: "var(--step-2)",
+            fontWeight: 300,
+            color: "var(--color-text-main)",
+            lineHeight: 1.2,
+            marginBottom: "var(--space-m)",
+            perspective: "800px",
+          }}
+        >
+          <span
+            aria-hidden
+            className="pointer-events-none col-start-1 row-start-1 select-none"
+            style={{
+              color: "var(--color-accent)",
+              opacity: 0.22,
+              filter: "blur(3px)",
+              transform: "translateZ(-24px) scale(1.06) translateY(4px)",
+            }}
+          >
+            Enter My 3D Memory Space
+          </span>
+          <span
+            className="col-start-1 row-start-1"
+            style={{
+              textShadow:
+                "0 2px 0 rgba(255,253,250,0.9), 0 22px 48px rgba(90, 78, 68, 0.14)",
+              transform: "translateZ(8px)",
+              zIndex: 1,
+            }}
+          >
+            Enter My 3D Memory Space
+          </span>
+        </h2>
 
         <p style={{
           fontFamily: "var(--body-font-family)", fontSize: "var(--step-0)",
